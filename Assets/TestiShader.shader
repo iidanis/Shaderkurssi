@@ -39,6 +39,7 @@ Shader "Unlit/TestiShader"
             {
                 float4 positionHCS : SV_POSITION;
                 float3 positionWS : TEXCOORD0;
+                float3 normals : NORMAL;
             };
 
             CBUFFER_START(UnityPerMaterial)
@@ -52,13 +53,15 @@ Shader "Unlit/TestiShader"
 
                 output.positionHCS = TransformObjectToHClip(input.positionOS);
                 output.positionWS = TransformObjectToWorld(input.positionOS);
+                output.normals = input.normalsSO;
                 
                 return output;
             }
 
             float4 Frag(const Varyings input) : SV_TARGET
             {
-                return _Color * clamp(0, 1, input.positionWS.x);
+                //return _Color * clamp(0, 1, input.positionWS.x);
+                return float4( input.normals, 1);
             }
             
             ENDHLSL
