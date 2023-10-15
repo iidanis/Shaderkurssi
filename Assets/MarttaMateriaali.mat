@@ -7,13 +7,13 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: MattiMateriaali
-  m_Shader: {fileID: 4800000, guid: f337ef14f74b20041815bc3fee11a5a6, type: 3}
+  m_Name: MarttaMateriaali
+  m_Shader: {fileID: 4800000, guid: e639846507c358f458b60d963cb87cac, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
-  m_ValidKeywords:
-  - _SPACEKEYWORD_VIEW_SPACE
-  m_InvalidKeywords: []
+  m_ValidKeywords: []
+  m_InvalidKeywords:
+  - _SPACEKEYWORD_OBJECT_SPACE
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -104,9 +104,10 @@ Material:
     - _Parallax: 0.005
     - _QueueOffset: 0
     - _ReceiveShadows: 1
+    - _Shininess: 1
     - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
-    - _SpaceKeyword: 2
+    - _SpaceKeyword: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _SrcBlendAlpha: 1
@@ -115,11 +116,11 @@ Material:
     - _ZWrite: 1
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
-    - _Color: {r: 0.50507927, g: 0, b: 1, a: 1}
+    - _Color: {r: 0.44691172, g: 0.7830189, b: 0.46524483, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
   m_BuildTextureStacks: []
---- !u!114 &1433166098824793715
+--- !u!114 &5488061022807793719
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
