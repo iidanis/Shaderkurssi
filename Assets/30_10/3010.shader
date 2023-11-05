@@ -36,7 +36,6 @@ Shader "Custom/3010"
                 float3 positionOS : POSITION;
                 float4 tangentOS : TANGENT;
                 float3 normalsOS : NORMAL;
-                float4 bitangentOS : TANGENT;
                 float2 uv : TEXCOORD0;
             };
 
@@ -66,8 +65,6 @@ Shader "Custom/3010"
             {
                 Varyings output;
 
-                output.positionHCS = TransformObjectToHClip(input.positionOS);
-
                 const VertexPositionInputs posInputs = GetVertexPositionInputs(input.positionOS);
                 const VertexNormalInputs normalInputs = GetVertexNormalInputs(input.normalsOS, input.tangentOS);
 
@@ -91,19 +88,20 @@ Shader "Custom/3010"
                 half3 puolivalisektori = normalize(_Light.direction + GetWorldSpaceViewDir(input.positionWS));
                 half3 specularLighting = pow(saturate(dot(input.normalsWS, puolivalisektori)), _Shininess) * _Light.color;
 
-                return float4((ambientLighting + diffuseLighting + specularLighting) * _Color, 1.f);
+                return float4((ambientLighting + diffuseLighting + specularLighting) * color, 1.f);
             }
 
-            float4 Frag(const Varyings input) : SV_TARGET
+            float4 Frag(Varyings input) : SV_TARGET
             {
-                Light _Light = GetMainLight();
                 const float4 texColor = SAMPLE_TEXTURE2D(_MainTex, sampler_MainTex, TRANSFORM_TEX(input.uv, _MainTex));
-                const float3 normalTS = UnpackNormal(SAMPLE_TEXTURE2D(_NormalMap, sampler_NormalMap, input.uv));
+                const float3 normalTS = UnpackNormal(SAMPLE_TEXTURE2D(_NormalMap, sampler_NormalMap, TRANSFORM_TEX(input.uv, _MainTex)));
                 const float3x3 tangentToWorld = float3x3(input.tangentWS, input.bitangentWS, input.normalsWS);
                 
                 const float3 normalWS = TransformTangentToWorld(normalTS, tangentToWorld, true);
 
-                return kissa;
+                input.normalsWS = normalWS;
+
+                return BlinnPhong(input, texColor);
             }
             ENDHLSL
         }
