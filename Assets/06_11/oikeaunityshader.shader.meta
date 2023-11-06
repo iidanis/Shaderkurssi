@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 7e3bec624aac7e24ab983b6f70237efd
+ShaderImporter:
+  externalObjects: {}
+  defaultTextures:
+  - _MainTex: {instanceID: 0}
+  - _BaselMap: {instanceID: 0}
+  - _ParallaxMap: {instanceID: 0}
+  - _SampleMetallic: {instanceID: 0}
+  - _SampleRoughness: {instanceID: 0}
+  - _SampleOcclusion: {instanceID: 0}
+  nonModifiableTextures: []
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
